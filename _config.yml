@@ -1,1 +1,26 @@
-theme: jekyll-theme-merlot
+# Site settings
+name: Zhaoke1an's Blog
+email: yj020827@163.com
+author: Keyan Zhao
+url: zhaoke1an.github.io
+resume_site: zhaoke1an.github.io/
+github: https://github.com/zhaoke1an/
+baseurl: ""
+description: I came to know it on paper, and I knew I had to do it!
+meta_description: 纸上得来终觉浅，绝知此事要躬行
+motto: 纸上得来终觉浅，绝知此事要躬行
+banner: 纸上得来终觉浅，绝知此事要躬行
+
+#permalink: /:categories/:year/:month/:day/:title/
+permalink: /:year/:month/:day/:title/
+paginate: 10
+
+exclude: ['README.md', 'Gemfile.lock', 'Gemfile', 'Rakefile']
+
+github_username: zhaoke1an
+
+# Build settings
+markdown: kramdown
+
+baidu_analysis: 94be4b0f9fc5d94cc0d0415ea6761ae9
+
