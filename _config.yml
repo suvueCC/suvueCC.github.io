@@ -1,26 +1,23 @@
 # Site settings
-name: Zhaoke1an's Blog
-email: yj020827@163.com
-author: Keyan Zhao
-url: zhaoke1an.github.io
-resume_site: zhaoke1an.github.io/
-github: https://github.com/zhaoke1an/
-baseurl: ""
-description: I came to know it on paper, and I knew I had to do it!
-meta_description: 纸上得来终觉浅，绝知此事要躬行
-motto: 纸上得来终觉浅，绝知此事要躬行
-banner: 纸上得来终觉浅，绝知此事要躬行
+title: HyG
+email: gaohaoyang126@126.com
+description: 浩阳的博客 前端爱好者
+# > # this means to ignore newlines until "baseurl:"
+#   Write an awesome description for your new site here. You can edit this
+#   line in _config.yml. It will appear in your document head meta (for
+#   Google search results) and in your feed.xml site description.
 
-#permalink: /:categories/:year/:month/:day/:title/
+# baseurl: "" # the subpath of your site, e.g. /blog/
+# url: "http://yourdomain.com" # the base hostname & protocol for your site
+# twitter_username: jekyllrb
+github_username:  Gaohaoyang
 permalink: /:year/:month/:day/:title/
-paginate: 10
-
-exclude: ['README.md', 'Gemfile.lock', 'Gemfile', 'Rakefile']
-
-github_username: zhaoke1an
 
 # Build settings
 markdown: kramdown
 
-baidu_analysis: 94be4b0f9fc5d94cc0d0415ea6761ae9
-
+# highlight
+# 本地用rouge, github上用pygments
+# highlighter: pygments
+# highlighter: rouge
+# highlighter: false
