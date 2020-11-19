@@ -17,15 +17,15 @@ author: Zk1an
 >>>```  
 >>重启MySQL服务：  
 >>>```text
->>>systemctl restart mysqld.service  
+>>>systemctl restart mysqld.service
 >>>```  
 >>停止MySQL服务：  
 >>>```text
->>>systemctl stop mysqld.service  
+>>>systemctl stop mysqld.service
 >>>```  
 >>查看MySQL服务运行状态：  
 >>>```text
->>>systemctl status mysqld.service  
+>>>systemctl status mysqld.service
 >>>```  
 
 
@@ -34,12 +34,12 @@ author: Zk1an
 [官网地址](https://dev.mysql.com/downloads/mysql/5.7.html#downloads)
 - 下载的安装包必须是.rpm-bundle.tar结尾的，安装的时候，对应自己的下载版本号，不要直接复制命令。  
 - 下载的同时，可以先在目标机器上创建一个存放该压缩包的文件夹  
-```shell script
+```text
 [root@cmp-mysql01 ~]#mkdir -p /usr/local/software/mysql5.7.31
 ```  
 - 然后通过ftp将MySQL的安装包，上传到这个文件夹中。  
 ## 二、cd到mysql压缩包目录并解压  
-```shell script
+```text
 [root@cmp-mysql01 mysql5.7.31]#cd /usr/local/software/mysql5.7.31  
 [root@cmp-mysql01 mysql5.7.31]# tar xvf mysql-5.7.31-1.el7.x86_64.rpm-bundle\ .tar  
 ```  
@@ -47,23 +47,23 @@ author: Zk1an
 ***方法一不好使的情况下，再试试方法二***  
 ### 3.1、方法一  
 - 查询mariadb信息  
-```shell script
+```text
 [root@cmp-mysql01 mysql5.7.31]# rpm -qa|grep mariadb  
 mariadb-libs-5.5.65-1.el7.x86_64  
 ```  
 - 使用rpe -e命令卸载  
-```shell script
+```text
 [root@cmp-mysql01 mysql5.7.31]# rpm -e mariadb-libs-5.5.65-1.el7.x86_64 --nodeps  
 ```  
 ### 3.2、方法二  
 - 使用yum remove 命名进行删除  
-```shell script
+```text
 [root@cmp-mysql01 mysql5.7.31]# yum remove mysql-libs  
 ```  
 ## 四、安装mysql-server服务，只需要安装如下4个软件包即可，使用rpm -ivh进行安装（按顺序安装，后面的服务依赖前面的服务）  
 ### 4.1、mysql-community-common安装/升级  
 Linux命令：  
-```shell script
+```text
 [root@cmp-mysql01 mysql5.7.31]# rpm -ivh mysql-community-common-5.7.31-1.el7.x86_64.rpm  
 ```  
 输出以下内容表示成功  
@@ -75,7 +75,7 @@ Linux命令：
 ```  
 ### 4.2、mysql-community-libs安装/升级  
 Linux命令：  
-```shell script
+```text
 [root@cmp-mysql01 mysql5.7.31]# rpm -ivh mysql-community-libs-5.7.31-1.el7.x86_64.rpm  
 ```  
 输出以下内容表示成功  
@@ -87,7 +87,7 @@ Linux命令：
 ```  
 ### 4.3、mysql-community-client安装/升级  
 Linux命令：  
-```shell script
+```text
 [root@cmp-mysql01 mysql5.7.31]# rpm -ivh mysql-community-client-5.7.31-1.el7.x86_64.rpm  
 ```  
 输出以下内容表示成功  
@@ -99,7 +99,7 @@ Linux命令：
 ```  
 ### 4.4、mysql-community-client安装/升级  
 Linux命令：  
-```shell script
+```text
 [root@cmp-mysql01 mysql5.7.31]# rpm -ivh mysql-community-server-5.7.31-1.el7.x86_64.rpm
 ```  
 
@@ -113,7 +113,7 @@ Linux命令：
 
 ### 4.5、安装过程中可能出现的问题（仅供参考）  
 - 缺少libaio  
-```shell script
+```text
 [root@cmp-mysql01 mysql5.7.31]# rpm -ivh mysql-community-server-5.7.31-1.el7.x86_64.rpm
 警告：mysql-community-server-5.7.17-1.el7.x86_64.rpm: 头V3 DSA/SHA1 Signature, 密钥 ID 5072e1f5: NOKEY
 错误：依赖检测失败：
@@ -128,7 +128,7 @@ Linux命令：
 
 - 缺少net-tools  
 
-```shell script
+```text
 [root@cmp-mysql01 mysql5.7.31]# rpm -ivh mysql-community-server-5.7.31-1.el7.x86_64.rpm 
 警告：mysql-community-server-5.7.17-1.el7.x86_64.rpm: 头V3 DSA/SHA1 Signature, 密钥 ID 5072e1f5: NOKEY
 错误：依赖检测失败：
@@ -139,7 +139,7 @@ yum install net-tools
 ```  
 
 - 缺少numactl  
-```shell script
+```text
 [root@cmp-mysql01 mysql5.7.31]# rpm -ivh mysql-community-server-5.7.31-1.el7.x86_64.rpm 
  
 报错：warning: mysql-community-server-5.7.9-1.el6.x86_64.rpm: Header V3 DSA/SHA1 Signature, key ID 5072e1f5: NOKEY
@@ -155,12 +155,12 @@ error: Failed dependencies:
 ## 五、初始化数据库  
 
 命令：  
-```shell script
+```text
 [root@cmp-mysql01 mysql5.7.31]# mysqld --initialize
 ```  
 ***注意：初始化后会在/var/log/mysqld.log生成随机密码***  
 ## 六、修改mysql数据库目录的所属用户及其所属组，然后启动mysql数据库  
-```shell script
+```text
 [root@cmp-mysql01 mysql5.7.31]# chown mysql:mysql /var/lib/mysql -R
 [root@cmp-mysql01 mysql5.7.31]# systemctl start mysqld.service
 [root@cmp-mysql01 mysql5.7.31]# systemctl status mysqld.service
@@ -181,7 +181,7 @@ error: Failed dependencies:
 ```  
 ## 七、登录mysql，并修改root用户的密码（系统强制要求，否则不能操作mysql）  
 ***初始登录密码可在/var/log/mysqld.log文件中找到***   
-```shell script
+```text
 [root@cmp-mysql01 mysql5.7.31]# mysql -uroot -p'-4iq<tyjVpLb'
 mysql: [Warning] Using a password on the command line interface can be insecure.
 Welcome to the MySQL monitor.  Commands end with ; or \g.
@@ -214,7 +214,7 @@ mysql> show databases;
 ```  
 ## 八、修改访问权限  
 目的：任何主机通过用户root和密码123456连接到mysql服务器，并授权所有权限  
-```shell script
+```text
 mysql> GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY '123456
 ' WITH GRANT OPTION;
 Query OK, 0 rows affected, 1 warning (0.00 sec)
@@ -223,17 +223,17 @@ Query OK, 0 rows affected (0.01 sec)
 ```  
 
 ## 九、重启MySQL服务  
-```shell script
+```text
 [root@cmp-mysql01 mysql5.7.31]# systemctl restart mysqld.service
 ```  
 ## 十、防火墙暴露3306端口  
 开放3306端口并重新加载：  
-```shell script
+```text
 [root@cmp-mysql01 mysql5.7.31]# firewall-cmd --zone=public --add-port=3306/tcp --permanent
 [root@cmp-mysql01 mysql5.7.31]# firewall-cmd --reload
 ```
 查看所有打开的端口：  
-```shell script
+```text
 firewall-cmd --zone=public --list-ports
 ```  
  
