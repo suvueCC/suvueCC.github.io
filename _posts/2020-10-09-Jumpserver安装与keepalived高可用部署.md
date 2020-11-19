@@ -10,11 +10,13 @@ author: Zk1an
 {:toc}
 
 # 一、环境准备  
+  
 | Node | IP |
 | :-----: | :----: |
 | master1 | 172.16.10.81 |
 | master2 | 172.16.10.82 |  
 | VIP | 172.16.10.80 |  
+  
 # 二、安装并配置keepalived  
 ## 2.1、【master1】 keepalived安装配置  
 - 安装keepalived服务  
@@ -79,7 +81,6 @@ fi
 ```  
   
 - 启动keepalived服务  
-  
 ```text
 [root@master1 ~]# systemctl start keepalived
 ```  
@@ -127,6 +128,7 @@ chk_haproxy_port
 }
 ```  
 - 编写健康监测的脚本  
+  
 ```text
 [root@master2 ~]# mkdir -p /opt/shell
 [root@master2 ~]# vi /opt/shell/chk_haproxy.sh  
