@@ -98,11 +98,10 @@ Linux命令：
    1:mysql-community-client-5.7.31-1.e################################# [100%]
 ```  
 ### 4.4、mysql-community-client安装/升级  
-Linux命令：  
+Linux命令:  
 ```text
 [root@cmp-mysql01 mysql5.7.31]# rpm -ivh mysql-community-server-5.7.31-1.el7.x86_64.rpm
 ```  
-
 输出以下内容表示成功  
 ```text
 警告：mysql-community-server-5.7.31-1.el7.x86_64.rpm: 头V3 DSA/SHA1 Signature, 密钥 ID 5072e1f5: NOKEY
@@ -110,8 +109,7 @@ Linux命令：
 正在升级/安装...
    1:mysql-community-server-5.7.31-1.e################################# [100%]
 ```  
-
-### 4.5、安装过程中可能出现的问题（仅供参考）  
+### 4.5、安装过程中可能出现的问题（仅供参考)  
 - 缺少libaio  
 ```text
 [root@cmp-mysql01 mysql5.7.31]# rpm -ivh mysql-community-server-5.7.31-1.el7.x86_64.rpm
@@ -148,8 +146,9 @@ error: Failed dependencies:
 解决办法：
    yum  install numactl
 ```  
+
 ## 五、初始化数据库  
-命令：  
+命令:  
 ```text
 [root@cmp-mysql01 mysql5.7.31]# mysqld --initialize
 ```  
