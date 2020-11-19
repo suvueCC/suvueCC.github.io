@@ -125,9 +125,7 @@ Linux命令：
 解决办法：
 [root@cmp-mysql01 mysql5.7.31]# yum install libaio
 ```  
-
 - 缺少net-tools  
-
 ```text
 [root@cmp-mysql01 mysql5.7.31]# rpm -ivh mysql-community-server-5.7.31-1.el7.x86_64.rpm 
 警告：mysql-community-server-5.7.17-1.el7.x86_64.rpm: 头V3 DSA/SHA1 Signature, 密钥 ID 5072e1f5: NOKEY
@@ -137,7 +135,6 @@ Linux命令：
 解决办法：
 yum install net-tools
 ```  
-
 - 缺少numactl  
 ```text
 [root@cmp-mysql01 mysql5.7.31]# rpm -ivh mysql-community-server-5.7.31-1.el7.x86_64.rpm 
@@ -151,9 +148,7 @@ error: Failed dependencies:
 解决办法：
    yum  install numactl
 ```  
-
 ## 五、初始化数据库  
-
 命令：  
 ```text
 [root@cmp-mysql01 mysql5.7.31]# mysqld --initialize
