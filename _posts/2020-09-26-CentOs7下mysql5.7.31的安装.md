@@ -110,6 +110,7 @@ Linux命令:
    1:mysql-community-server-5.7.31-1.e################################# [100%]
 ```  
 ### 4.5、安装过程中可能出现的问题（仅供参考)  
+  
 缺少libaio  
 ```text
 [root@cmp-mysql01 mysql5.7.31]# rpm -ivh mysql-community-server-5.7.31-1.el7.x86_64.rpm
@@ -123,6 +124,7 @@ Linux命令:
 解决办法：
 [root@cmp-mysql01 mysql5.7.31]# yum install libaio
 ```  
+  
 缺少net-tools  
 ```text
 [root@cmp-mysql01 mysql5.7.31]# rpm -ivh mysql-community-server-5.7.31-1.el7.x86_64.rpm 
@@ -133,6 +135,7 @@ Linux命令:
 解决办法：
 yum install net-tools
 ```  
+  
 缺少numactl  
 ```text
 [root@cmp-mysql01 mysql5.7.31]# rpm -ivh mysql-community-server-5.7.31-1.el7.x86_64.rpm 
@@ -146,6 +149,7 @@ error: Failed dependencies:
 解决办法：
    yum  install numactl
 ```  
+  
 ## 五、初始化数据库  
 命令:  
 ```text
