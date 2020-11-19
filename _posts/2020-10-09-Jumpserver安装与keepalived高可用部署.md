@@ -19,7 +19,7 @@ author: Zk1an
   
 # 二、安装并配置keepalived  
 ## 2.1、【master1】 keepalived安装配置  
-- 安装keepalived服务  
+安装keepalived服务  
 ```text
 [root@master1 ~]# yum install -y openssl-devel
 [root@master1 ~]# wget http://www.percona.com/redir/downloads/Percona-XtraDB-Cluster/5.5.37-25.10/RPM/rhel6/x86_64/Percona-XtraDB-Cluster-shared-55-5.5.37-25.10.756.el6.x86_64.rpm
@@ -28,7 +28,7 @@ author: Zk1an
 [root@master1 ~]# vim /etc/keepalived/keepalived.conf
 ```  
   
-- 清空默认内容，直接采用下面配置  
+清空默认内容，直接采用下面配置  
 ```text
 ! Configuration File for keepalived
 global_defs {
@@ -60,7 +60,7 @@ chk_haproxy_port
 }
 ```  
   
-- 编写健康监测的脚本  
+编写健康监测的脚本  
 ```text
 [root@master1 ~]# mkdir -p /opt/shell
 [root@master1 ~]# vi /opt/shell/chk_haproxy.sh  
@@ -73,17 +73,17 @@ systemctl stop keepalived
 fi
 [root@master1 ~]# chmod 755 /opt/shell/chk_haproxy.sh  
 ```  
-- 将防火墙的vvrp开启。注意命令中要修改自己的网卡名称（这里是ens192），解决脑裂问题  
+将防火墙的vvrp开启。注意命令中要修改自己的网卡名称（这里是ens192），解决脑裂问题  
 ```text
 [root@master1 ~]# firewall-cmd --direct --permanent --add-rule ipv4 filter INPUT 0 --in-interface ens192 --destination 224.0.0.18 --protocol vrrp -j ACCEPT
 [root@master1 ~]# firewall-cmd --reload
 ```  
-- 启动keepalived服务  
+启动keepalived服务  
 ```text
 [root@master1 ~]# systemctl start keepalived
 ```  
 ## 2.2、【master2】keepalived安装配置  
-- 安装keepalived服务  
+安装keepalived服务  
 ```text
 [root@master2 ~]# yum install -y openssl-devel
 [root@master2 ~]# wget http://www.percona.com/redir/downloads/Percona-XtraDB-Cluster/5.5.37-25.10/RPM/rhel6/x86_64/Percona-XtraDB-Cluster-shared-55-5.5.37-25.10.756.el6.x86_64.rpm
@@ -91,7 +91,7 @@ fi
 [root@master2 ~]# yum install keepalived 
 [root@master2 ~]# vim /etc/keepalived/keepalived.conf
 ```  
-- 清空默认内容，直接采用下面配置  
+清空默认内容，直接采用下面配置  
 ```text
 ! Configuration File for keepalived
 global_defs {
@@ -122,7 +122,7 @@ chk_haproxy_port
 }
 }
 ```  
-- 编写健康监测的脚本  
+编写健康监测的脚本  
 ```text
 [root@master2 ~]# mkdir -p /opt/shell
 [root@master2 ~]# vi /opt/shell/chk_haproxy.sh  
@@ -136,12 +136,12 @@ systemctl stop keepalived
 fi
 [root@master2 ~]# chmod 755 /opt/shell/chk_haproxy.sh  
 ```  
-- 将防火墙的vvrp开启。注意命令中要修改自己的网卡名称（这里是ens192），解决脑裂问题  
+将防火墙的vvrp开启。注意命令中要修改自己的网卡名称（这里是ens192），解决脑裂问题  
 ```text
 [root@master2 ~]# firewall-cmd --direct --permanent --add-rule ipv4 filter INPUT 0 --in-interface ens192 --destination 224.0.0.18 --protocol vrrp -j ACCEPT
 [root@master2 ~]# firewall-cmd --reload
 ```  
-- 启动keepalived服务  
+启动keepalived服务  
 ```text
 [root@master2 ~]# systemctl start keepalived
 ``` 
@@ -177,9 +177,7 @@ fi
     inet 172.16.10.82/21 brd 172.16.151.255 scope global noprefixroute ens192
     inet 172.16.10.80/32 scope global ens192    
 ```  
-
 上面我们模拟了当master1故障时，VIP会漂移到master2节点上，下面我们再将master1的MySQL和keepalived服务恢复正常，再看一下VIP的变化  
-
 ```text
 [root@master1 ~]# ./jmsctl.sh start 
 [root@master1 ~]# systemctl start keepalived  
