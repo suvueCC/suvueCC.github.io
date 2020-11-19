@@ -110,7 +110,7 @@ Linux命令:
    1:mysql-community-server-5.7.31-1.e################################# [100%]
 ```  
 ### 4.5、安装过程中可能出现的问题（仅供参考)  
-- 缺少libaio  
+缺少libaio  
 ```text
 [root@cmp-mysql01 mysql5.7.31]# rpm -ivh mysql-community-server-5.7.31-1.el7.x86_64.rpm
 警告：mysql-community-server-5.7.17-1.el7.x86_64.rpm: 头V3 DSA/SHA1 Signature, 密钥 ID 5072e1f5: NOKEY
