@@ -11,7 +11,7 @@ author: Zk1an
 
 ## 1、firewalld的基本使用  
 
-```text
+```shell
 #启动  
 systemctl start firewalld  
 #关闭   
@@ -24,7 +24,7 @@ systemctl disable firewalld
 systemctl enable firewalld  
 ```  
 ## 2.systemctl是CentOS7的服务管理工具中主要的工具，它融合之前service和chkconfig的功能于一体  
-```text
+```shell
 #启动一个服务  
 systemctl start firewalld.service
 #关闭一个服务  
@@ -45,7 +45,7 @@ systemctl list-unit-files|grep enabled
 systemctl --failed  
 ```  
 ## 3.配置firewalld-cmd  
-```text
+```shell
 #查看版本  
 firewall-cmd --version  
 #查看帮助  

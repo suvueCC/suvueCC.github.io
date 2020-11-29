@@ -54,7 +54,7 @@ tar -vzxf jdk-8u201-linux-x64.tar.gz
 
 
 
-##  6.设置环境变量
+## 6、设置环境变量
 
 ```shell
 vim /etc/profile
